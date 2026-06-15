@@ -1,28 +1,301 @@
-This project is built using a modern full-stack TypeScript architecture consisting of the following key technologies and frameworks:
-1. Frontend Layer
-
-* React 19 (SPA): Powers the user interface, utilizing modern functional components, state management (useState, useEffect), and context boundaries.
-* Vite 6: Functions as the lightning-fast frontend bandler and development engine, integrating smoothly with the React applet framework.
-* Lucide React: Provides the vector iconography suite used throughout the interface.
-* Motion: Handles interactive animations and transitions (importing from motion/react).
-2. Backend Server Layer
-
-* Node.js (TypeScript Runtime): Consolidates server execution using Node's modern ecosystem capabilities.
-* Express 4: Serves as the web framework to handle RESTful API endpoints (such as ticket CRUD operations, SLA triggers, user management, and AI data parsing).
-3. Database / Persistence Layer
-
-* JSON File Storage (fs / path): Utilizes a server-side JSON-based flat-file database system (data/db.json) for data persistence. This approach acts as a lightweight document-store database, complete with pre-seeded data, automated validation, and atomic writes.
-4. AI & Intelligent Automation Layer
-
-* Google Gemini SDK (@google/genai): Integrates the advanced @google/genai TypeScript SDK server-side (using models like gemini-3.5-flash) to handle smart ticketing functions, build-checks, risk scoring, category deduction, and generating detailed executive summaries.
-5. Styling & User Interface
-
-* Tailwind CSS v4: Serves as the CSS styling engine, compiling directly through the @tailwindcss/vite plugin.
-* Modern Custom Typography: Configured with sleek, high-contrast typography pairings (such as "Inter" for interface controls and monospace accents).
-6. Build System & Tooling
-
-* TypeScript 5: Ensures robust type safety, contracts, and modular validation across the codebase.
-* esbuild: Used in the build phase to bundle the backend server.ts into a standalone, portable CommonJS bundle (dist/server.cjs) to guarantee reliable deployment behavior.
-* tsx: Executes TypeScript server files directly in the development workspace.
-database cant we use postgres?
-Gemini 3.5 FlashRan for 30s
+You are a Principal Software Architect, Senior Full Stack Engineer, Senior AI Engineer, DevOps Engineer, and Product Designer.
+Build a production-ready enterprise application called:
+"AI-Powered Ticket Intelligence & SLA Management Platform"
+IMPORTANT RULES:
+This is NOT a demo project.
+This is NOT a college project.
+Generate production-quality code.
+Every button must perform a real action.
+Do NOT generate placeholder buttons.
+Do NOT generate dummy pages.
+Do NOT generate incomplete screens.
+Every page must be fully functional.
+Follow clean architecture principles.
+Generate maintainable and scalable code.
+Generate a complete project with deployment support.
+Validate all user inputs.
+Handle all API failures gracefully.
+Include proper error handling and logging.
+Use environment variables for all secrets.
+Use role-based access control.
+Use PostgreSQL as the primary database.
+Use Gemini API for AI processing.
+Use FastAPI backend.
+Use Streamlit frontend.
+The final project must be deployable and fully functional.
+==================================================
+PROJECT OBJECTIVE
+Build an AI-powered ticket intelligence platform that automatically receives support requests, analyzes issue complexity using AI, predicts SLA breach risks, automatically assigns tickets to the most suitable engineer, tracks ticket progress, monitors SLA compliance, and provides operational analytics.
+The primary goal is:
+Reduce SLA breaches by intelligently analyzing, prioritizing, routing, and monitoring support tickets.
+==================================================
+USERS
+ROLE 1: TEAM LEAD
+Permissions:
+View all tickets
+View all engineers
+View team workload
+View SLA analytics
+View risk analytics
+View performance analytics
+Create team members
+Disable team members
+Reassign only Critical tickets
+Receive critical alerts
+View executive AI summaries
+ROLE 2: TEAM MEMBER
+Permissions:
+Login
+View only assigned tickets
+Change ticket status
+Mark ticket as resolved
+View personal analytics
+Receive assigned ticket alerts
+No public registration.
+Only Team Lead can create team members.
+==================================================
+TECH STACK
+Frontend:
+Streamlit
+Backend:
+FastAPI
+Database:
+PostgreSQL
+ORM:
+SQLAlchemy
+Validation:
+Pydantic
+AI:
+Gemini API
+Notifications:
+Discord Webhooks
+Email Processing:
+Gmail
+Outlook
+Data Processing:
+Pandas
+Authentication:
+JWT Authentication
+Deployment:
+Render
+Neon PostgreSQL
+==================================================
+UI DESIGN SYSTEM
+Design Style:
+Enterprise SaaS Dashboard
+Theme:
+White background
+Slate Gray accents
+Professional Blue highlights
+Reference Style:
+Jira
+ServiceNow
+Atlassian products
+Design Rules:
+Minimal
+Professional
+No flashy gradients
+No unnecessary animations
+Clear tables
+Clear KPIs
+Responsive layout
+==================================================
+INPUT SOURCES
+Gmail Inbox
+Outlook Inbox
+CSV Upload
+Manual Text Entry
+==================================================
+EMAIL INGESTION
+System must automatically poll Gmail and Outlook every 5 minutes.
+Workflow:
+Email
+↓
+Read Subject
+↓
+Read Body
+↓
+Create Ticket
+↓
+Store Ticket
+↓
+AI Analysis
+No manual sync button.
+Automatic polling only.
+==================================================
+AI ANALYSIS ENGINE
+For every ticket, Gemini must return:
+{
+"category": "",
+"complexity": 1-5,
+"priority": "P1/P2/P3/P4",
+"business_impact": "Low/Medium/High",
+"recommendation": ""
+}
+Supported Categories:
+Database
+Network
+Security
+Infrastructure
+Cloud
+Application
+Performance
+Authentication
+Other
+Complexity Scale:
+1 = Very Simple
+2 = Simple
+3 = Moderate
+4 = Complex
+5 = Critical
+==================================================
+SLA ENGINE
+P1 = 4 Hours
+P2 = 8 Hours
+P3 = 24 Hours
+P4 = 48 Hours
+Calculate:
+SLA Deadline
+Remaining Time
+Breached Status
+==================================================
+RISK PREDICTION ENGINE
+Generate Risk Score:
+0 - 100
+Factors:
+Remaining Time
+Priority
+Complexity
+Business Impact
+Risk Levels:
+0-30 = Low
+31-60 = Medium
+61-80 = High
+81-100 = Critical
+==================================================
+SMART ASSIGNMENT ENGINE
+Tickets must be assigned automatically.
+Assignment Factors:
+Skill Match
+Current Active Ticket Count
+Current Workload
+Priority
+Open Tickets
+Goal:
+Assign ticket to the engineer with the highest probability of resolving it before SLA breach.
+Assignment must be automatic.
+No manual approval.
+==================================================
+TICKET LIFECYCLE
+Open
+↓
+In Progress
+↓
+Resolved
+↓
+Closed
+Only Team Lead can move:
+Resolved → Closed
+==================================================
+AI INSIGHTS ENGINE
+When a team member resolves tickets, generate personal insights automatically.
+Example:
+Engineer:
+Rahul
+Output:
+Resolved Tickets: 42
+Database Tickets: 20
+Network Tickets: 8
+Security Tickets: 4
+Most Frequent Category: Database
+Average Resolution Time: 1.8 Hours
+Top Strength Area: Database Incidents
+Display these insights on the engineer dashboard.
+==================================================
+DISCORD NOTIFICATIONS
+Trigger alerts when:
+Critical Ticket Created
+Risk Score > 80
+Remaining SLA < 30 Minutes
+SLA Breached
+Send alerts to:
+Assigned Engineer
+AND
+Team Lead
+Alert Example:
+🚨 CRITICAL INCIDENT
+Ticket ID:
+Category:
+Priority:
+Risk Score:
+Assigned Engineer:
+Recommendation:
+==================================================
+TEAM LEAD DASHBOARD
+Show:
+Total Tickets
+Open Tickets
+In Progress Tickets
+Resolved Tickets
+Closed Tickets
+Critical Tickets
+Near Breach Tickets
+SLA Breaches
+Team Workload
+Engineer Performance
+Category Distribution
+Risk Distribution
+Executive Summary
+==================================================
+TEAM MEMBER DASHBOARD
+Show:
+My Assigned Tickets
+My Open Tickets
+My Resolved Tickets
+Personal Analytics
+Personal AI Insights
+==================================================
+EXECUTIVE AI SUMMARY
+Generate management summaries.
+Example:
+Today 35 tickets were analyzed.
+7 critical risks were detected.
+Database incidents represent 42% of high-risk tickets.
+Average team resolution time is 2.3 hours.
+Immediate focus is recommended on Database and Infrastructure incidents.
+==================================================
+DATABASE TABLES
+users
+tickets
+ticket_analysis
+assignments
+notifications
+sla_tracking
+audit_logs
+==================================================
+DELIVERABLES
+Generate:
+Complete Folder Structure
+Database Schema
+FastAPI Backend
+Streamlit Frontend
+PostgreSQL Models
+Authentication System
+Gmail Integration
+Outlook Integration
+Gemini Integration
+Discord Integration
+Smart Assignment Engine
+SLA Engine
+Risk Prediction Engine
+AI Insights Engine
+Dashboard Pages
+Environment Variables
+Deployment Guide
+README
+Sample Data
+API Documentation
+Build the project in phases.
+Start with architecture and folder structure first.
+Do not skip implementation details.
+Generate production-ready code.
