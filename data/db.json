@@ -1,0 +1,34 @@
+{
+  "tickets": [
+    {
+      "id": 1,
+      "employeeName": "Mukesh",
+      "email": "mukesh@example.com",
+      "department": "IT",
+      "priority": "High",
+      "issue": "Unable to login to portal",
+      "status": "Open",
+      "createdAt": "2026-06-16T09:00:00Z"
+    },
+    {
+      "id": 2,
+      "employeeName": "Dharshan",
+      "email": "dharshan@example.com",
+      "department": "HR",
+      "priority": "Medium",
+      "issue": "Attendance report not generating",
+      "status": "In Progress",
+      "createdAt": "2026-06-16T10:15:00Z"
+    },
+    {
+      "id": 3,
+      "employeeName": "Junait",
+      "email": "junait@example.com",
+      "department": "Finance",
+      "priority": "Low",
+      "issue": "Need access to invoice dashboard",
+      "status": "Resolved",
+      "createdAt": "2026-06-16T11:30:00Z"
+    }
+  ]
+}
